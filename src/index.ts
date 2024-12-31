@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import express from 'express';
-import { createServer } from 'http';
+import { createServer } from 'https';
 import { Server } from 'socket.io';
 import fs from 'fs'
 const options = {
@@ -8,7 +8,7 @@ const options = {
     cert: fs.readFileSync('./server.crt'),
 };
 const app = express();
-const server = createServer(app);
+const server = createServer(options,app);
 const io = new Server(server, {
     cors: {
         origin: '*',
